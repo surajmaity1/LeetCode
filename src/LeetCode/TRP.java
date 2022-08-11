@@ -1,6 +1,6 @@
 package LeetCode;
 
-public class TrappingRainWater {
+public class TRP {
     //https://leetcode.com/problems/trapping-rain-water/
 
 
