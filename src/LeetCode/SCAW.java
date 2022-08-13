@@ -9,46 +9,40 @@ public class SCAW {
     //https://leetcode.com/problems/substring-with-concatenation-of-all-words/
 
     //brute-force
-    public List<Integer> findSubstring(String str, String[] words) {
-        if(str == null || str.length() == 0 || words == null || words.length == 0) {
-            return new ArrayList<>();
+    public List<Integer> findSubstring(String s, String[] words) {
+        List<Integer> list = new ArrayList<Integer>();
+        Map<String, Integer> map = new HashMap<>();
+
+        int wordLen = words.length;
+        int eachWordLen = words[0].length();
+        int loop = s.length() - (wordLen * eachWordLen) + 1;
+
+        for(String word : words){
+            map.put(word, map.getOrDefault(word, 0) + 1);
         }
 
-        Map<String, Integer> frequencyMap = new HashMap<>();
+        for(int i = 0; i < loop; i++){
+            Map<String, Integer> temp = new HashMap<>();
+            for(int j = 0; j < wordLen; j++){
+                int index = i + j * eachWordLen;
+                String subS = s.substring(index, index+eachWordLen);
 
-        for(String word: words) {
-            frequencyMap.put(word, frequencyMap.getOrDefault(word, 0) + 1);
-        }
-
-        int eachWordLength = words[0].length();
-        int totalWords = words.length;
-        List<Integer> result = new ArrayList<>();
-
-        for (int i = 0; i <= str.length() - totalWords * eachWordLength; i++) {
-
-            Map<String, Integer> seenWords = new HashMap<>();
-
-            for (int j = 0; j < totalWords; j++) {
-                int wordIndex = i + j * eachWordLength;
-
-                String word = str.substring(wordIndex, wordIndex + eachWordLength);
-
-                if(!frequencyMap.containsKey(word)) {
+                if(!map.containsKey(subS)){
                     break;
                 }
 
-                seenWords.put(word, seenWords.getOrDefault(word, 0) + 1);
+                temp.put(subS, temp.getOrDefault(subS, 0) + 1);
 
-                if(seenWords.get(word) > frequencyMap.getOrDefault(word, 0)) {
+                if(temp.get(subS) > map.getOrDefault(subS, 0)){
                     break;
                 }
 
-                if(j + 1 == totalWords)   {
-                    result.add(i);
+                if(j + 1 == wordLen){
+                    list.add(i);
                 }
             }
         }
 
-        return result;
+        return list;
     }
 }
