@@ -1,50 +1,47 @@
 package Practice;
 
-import java.util.Arrays;
+
+import java.util.Scanner;
 
 public class Program {
     public static void main(String[] args) {
-        int[] arr = {3,0,3,0};
-        int max = 0;
-        int minIndex = -1;
+        Scanner sc = new Scanner(System.in);
+
+//        String text = sc.nextLine();
+        String text = "This is my car";
+        int len = text.length();
+
+        String result = "";
+        String temp = "";
+
+        for(int i = len - 1; i>=0; i--){
+            if(text.charAt(i) == ' '){
+                result += rev(temp);
+                result += " ";
+                temp = "";
+                continue;
+            }
+            else if (i == 0){
+                temp += text.charAt(i);
+                result += rev(temp);
+            }
+            temp += text.charAt(i);
+        }
+        System.out.println(result);
+    }
+
+    static String rev(String rev){
+        if(rev.length() < 2){
+            return rev;
+        }
+        char[] arr = rev.toCharArray();
         int n = arr.length;
-        for(int i = 0; i<n; i++){
-
-            if(max < arr[i]){
-                max = arr[i];
-                minIndex = i;
-            }
-
+        for(int i = 0; i < (n)/2; i++){
+            char temp = arr[i];
+            arr[i] = arr[n-i-1];
+            arr[n-i-1] = temp;
         }
-
-        System.out.println("max: "+max);
-        System.out.println("minIndex: "+minIndex);
+        String result = new String(arr);
+        return result;
     }
-
-
-
-    static int edgeScore(int[] edges) {
-
-        int n = edges.length;
-        int[] arr = new int[n];
-
-        for(int i = 0; i < n; i++){
-            arr[edges[i]] += i;
-        }
-
-        System.out.println(Arrays.toString(arr));
-
-        int max = arr[0];
-        int minIndex = Integer.MAX_VALUE;
-        for(int i = 0; i<n; i++){
-
-            if(max < arr[i]){
-                max = arr[i];
-                minIndex = Math.min(minIndex, i);
-            }
-            System.out.println("max: " + max+"\nminindex: " + minIndex);
-        }
-        return minIndex;
-    }
-
 }
