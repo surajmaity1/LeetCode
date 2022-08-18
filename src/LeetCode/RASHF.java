@@ -11,6 +11,7 @@ public class RASHF {
 
 
     //Time: O(N)      Space: O(N)
+    //hashmap and count sort
     public int minSetSize2(int[] arr) {
         int n = arr.length;
         HashMap<Integer, Integer> cnt = new HashMap<>();
