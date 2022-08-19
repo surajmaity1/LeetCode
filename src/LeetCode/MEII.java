@@ -5,20 +5,45 @@ import java.util.*;
 public class MEII {
     //https://leetcode.com/problems/majority-element-ii/
 
-    //please complete bit operation as soon as possible
-    //bit operation
-    public List<Integer> majorityElement3(int[] nums) {
-        List<Integer> list = new ArrayList<>();
-        int[] bit = new int[32];
-        for (int num: nums)
-            for (int i=0; i<32; i++)
-                if ((num>>(31-i) & 1) == 1)
-                    bit[i]++;
-        int ret=0;
-        for (int i=0; i<32; i++) {
-            bit[i]=bit[i]>nums.length/3?1:0;
-            ret += bit[i]*(1<<(31-i));
+
+    //Boyer Moore Voting Algorithm
+    public List<Integer> majorityElement(int[] nums) {
+        int c1,c2,num1,num2;
+
+        c1 = c2 = 0;
+        num1 = num2 = Integer.MIN_VALUE;
+
+        for(int val : nums){
+            if(num1 == val) c1++;
+            else if(num2 == val) c2++;
+            else if(c1 == 0){
+                num1 = val;
+                c1 = 1;
+            }
+            else if(c2 == 0){
+                num2 = val;
+                c2 = 1;
+            }
+            else{
+                c1--;
+                c2--;
+            }
         }
+        List<Integer> list = new ArrayList<>();
+        c1 = c2 = 0;
+        for(int val : nums){
+            if(val == num1){
+                c1++;
+            }
+            if(val == num2){
+                c2++;
+            }
+        }
+        int n = nums.length;
+        if(c1 > n/3)
+            list.add(num1);
+        if(c2 > n/3)
+            list.add(num2);
         return list;
     }
     //BRUTE FORCE
@@ -44,6 +69,8 @@ public class MEII {
     }
 
     //Using Hash-map
+    //TC: O(n*long(n))
+    //SC: O(n)
     public List<Integer> majorityElement1(int[] nums) {
         List<Integer> list = new ArrayList<>();
         int n = nums.length;

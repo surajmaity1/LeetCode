@@ -6,6 +6,23 @@ import java.util.Map;
 public class ME {
     //https://leetcode.com/problems/majority-element/
 
+    //Moore Voting Algorithm
+    public int majorityElement(int[] nums) {
+        int candidate = 0;
+        int count = 0;
+
+        for(int num : nums){
+            if(count == 0){
+                candidate = num;
+            }
+
+            if(candidate == num)count++;
+            else count--;
+        }
+
+        return candidate;
+    }
+
     //bit operation
     public int majorityElement1(int[] nums) {
         int[] bit = new int[32];
