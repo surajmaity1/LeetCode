@@ -13,11 +13,19 @@ public class PF {
         return n > 0 && (n&(n-1)) == 0 && (n - 1) % 3 == 0;
     }
 
+    //best
+    public boolean isPowerOfTwo(int n) {
+        return n > 0 && (Math.floor(n) == Math.ceil(n));
+
+    }
+
     //Note: log and exponential are inverse [means opposite]
     //logx(b) =  y.. => b^y = x
     static boolean isPowerOfFour4(int n) {
         return (Math.log(n) / Math.log(4)) % 1 == 0;
     }
+
+
 
 
     //TC: log(n)
