@@ -1,6 +1,13 @@
-package Practice;
+package SB;
 
-public class Program{
+public class ROWS {
+    //REVERSE ONLY WORDS IN A STRING
+
+    /*
+            Input: the boy ran
+            Output: eht yob nar
+            Reverse
+     */
     public static void main(String[] args) {
         String str = "the boy ran";
         System.out.println(InverseWordsInSameOrder(str));

@@ -4,16 +4,19 @@ import java.util.*;
 
 public class Prog {
     public static void main(String[] args) {
-        double d = 30.123456;
-        System.out.println(d);
-        System.out.println(myPow(2,10));
+        System.out.println(reverse("hello"));
     }
-    static int myPow(int x, int n) {
-        int res = x;
-        for(int i = 0; i<n-1; i++){
-            res *= x;
+    static String reverse(String str){
+
+        char[] arr = str.toCharArray();
+        int n = arr.length;
+
+        for (int i = 0; i < n/2; i++) {
+            char temp = arr[i];
+            arr[i] = arr[n-i-1];
+            arr[n-i-1] = temp;
         }
-        return res;
+        return new String(arr);
     }
 
 }
