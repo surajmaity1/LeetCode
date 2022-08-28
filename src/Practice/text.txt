@@ -1,0 +1,22 @@
+import java.util.Scanner;
+class Program{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter numerator for first fraction : ");
+        int num1 = sc.nextInt();
+        System.out.print("Enter denominator for first fraction : ");
+        int den1 = sc.nextInt();
+        System.out.print("Enter numerator for second fraction : ");
+        int num2 = sc.nextInt();
+        System.out.print("Enter denominator for second fraction : ");
+        int den2 = sc.nextInt();
+
+
+    }
+    static int gcd(int a, int b){
+
+        if(a==b){return a;}
+        return gcd(b%a,a);
+    }
+}
