@@ -43,6 +43,11 @@ public class ME {
         Map<Integer, Integer> map = new HashMap<>();
 
         for(int num : nums){
+
+            /*
+            below code is same as this => map.put(num, map.getOrDefault(num,0) +1);
+
+
             if(!map.containsKey(num)){
                 map.put(num, 1);
             }
@@ -50,6 +55,8 @@ public class ME {
                 map.put(num, map.get(num) + 1);
             }
 
+             */
+            map.put(num, map.getOrDefault(num,0) +1);
             if(map.get(num) > n/2){
                 return num;
             }

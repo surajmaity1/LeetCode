@@ -6,6 +6,11 @@ public class PT {
         return n > 0 && (n&(n-1)) == 0 && (n%10 == 1|| n%10 ==2|| n%10 ==4 ||  n%10 ==8 || n%10 == 6);
     }
 
+    public boolean isPowerOfTwo(int n) {
+        if(n <= 0){return false;}
+        return (n&(n-1)) == 0;
+    }
+
     public boolean isPowerOfTwo2(int n) {
         return n > 0 && (n & n - 1) == 0;
     }
