@@ -26,8 +26,8 @@ public class RM {
         int[][] mat2 = new int[r][c];
         int i = 0, j = 0;
 
-        for(int[] arr : mat){
-            for(int val : arr){
+        for(int r1 = 0; r1 < row ; r1++){
+            for(int c1 = 0; c1<col;c1++){
                 if(j >= c ){
                     j=0;
                     if(i <= r-1) {
@@ -37,7 +37,7 @@ public class RM {
                         break;
                     }
                 }
-                mat2[i][j] = val;
+                mat2[i][j] = mat[r1][c1];
                 j++;
             }
         }
