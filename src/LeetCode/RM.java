@@ -1,8 +1,21 @@
 package LeetCode;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class RM {
     //https://leetcode.com/problems/reshape-the-matrix/
-    public int[][] matrixReshape(int[][] mat, int r, int c) {
+    public static void main(String[] args) {
+        int[][] arr = {
+                {1,2},{3,4}
+        };
+        for(int[] a : matrixReshape(arr, 1,4)){
+            System.out.println(Arrays.toString(a));
+        }
+    }
+
+    //BRUTE-FORCE
+    static int[][] matrixReshape(int[][] mat, int r, int c) {
         int row = mat.length;
         int col = mat[0].length;
 
@@ -11,18 +24,21 @@ public class RM {
         }
 
         int[][] mat2 = new int[r][c];
-        int r1 = 0, r2 = 0, c1 = 0, c2 = 0;
+        int i = 0, j = 0;
 
-        for(int i = 0; i<row; i++){
-            if(c2 == c){c2=0;}
-            else{
-                c2++;
-            }
-            if(r2 == r){break;}
-            else{r2++;}
-            for(int j = 0; j<col ;j++){
-
-                mat2[r2][c2] = mat[i][j];
+        for(int[] arr : mat){
+            for(int val : arr){
+                if(j >= c ){
+                    j=0;
+                    if(i <= r-1) {
+                        i++;
+                    }
+                    else{
+                        break;
+                    }
+                }
+                mat2[i][j] = val;
+                j++;
             }
         }
         return mat2;
