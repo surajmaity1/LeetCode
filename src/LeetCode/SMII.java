@@ -1,42 +1,44 @@
 package LeetCode;
 
-import java.util.ArrayList;
-import java.util.List;
+public class SMII {
+    //https://leetcode.com/problems/spiral-matrix-ii/
 
-public class SM {
-    //https://leetcode.com/problems/spiral-matrix/
-    public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> ans = new ArrayList<>();
-        int rowBeg = 0, rowEnd = matrix.length - 1, colBeg = 0, colEnd = matrix[0].length - 1;
 
+
+    //BRUTE-FORCE
+    public int[][] generateMatrix(int n) {
+        int[][] matrix = new int[n][n];
+        int rowBeg = 0, rowEnd = n - 1, colBeg = 0, colEnd = n - 1;
+
+        int val = 1;
         while(rowBeg<=rowEnd && colBeg<= colEnd){
 
             for(int i = colBeg; i<= colEnd; i++){
-                ans.add(matrix[rowBeg][i]);
+                matrix[rowBeg][i] = val++;
             }
             rowBeg++;
 
             for(int i = rowBeg; i <= rowEnd; i++){
-                ans.add(matrix[i][colEnd]);
+                matrix[i][colEnd] = val++;
             }
             colEnd--;
 
             if(rowBeg <= rowEnd){
                 for(int i = colEnd; i >= colBeg; i--){
-                    ans.add(matrix[rowEnd][i]);
+                    matrix[rowEnd][i] = val++;
                 }
                 rowEnd--;
             }
 
             if(colBeg <= colEnd){
                 for(int i = rowEnd; i >= rowBeg; i--){
-                    ans.add(matrix[i][colBeg]);
+                    matrix[i][colBeg] = val++;
                 }
                 colBeg++;
             }
 
         }
 
-        return ans;
+        return matrix;
     }
 }
