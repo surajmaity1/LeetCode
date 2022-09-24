@@ -1,6 +1,7 @@
 package LeetCode;
 
 public class FMP {
+
     //https://leetcode.com/problems/first-missing-positive/
     public int firstMissingPositive(int[] nums) {
         int n = nums.length;
