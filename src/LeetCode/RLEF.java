@@ -1,6 +1,8 @@
 package LeetCode;
 
 public class RLEF {
+    //https://leetcode.com/problems/remove-letter-to-equalize-frequency/description/
+    //2423. Remove Letter To Equalize Frequency
     public static void main(String[] args) {
         String str = "abcc";
         System.out.println(equalFrequency(str));
