@@ -5,32 +5,25 @@ import java.util.*;
 public class Program{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int k = sc.nextInt();
+        String str = sc.nextLine();
+        StringBuilder sb = new StringBuilder(str);
 
-        if (k == 0){
-            System.out.print(n);
-            return;
+        for (int i = 0; i < sb.length()-1; ) {
+            if (sb.charAt(i) == 'A' && sb.charAt(i + 1) == 'B') {
+                sb.deleteCharAt(i);
+                sb.deleteCharAt(i + 1);
+                i=0;
+            }
+            else if (sb.charAt(i) == 'C' && sb.charAt(i + 1) == 'D') {
+                sb.deleteCharAt(i);
+                sb.deleteCharAt(i + 1);
+                i=0;
+            }
+            else{
+                i++;
+            }
         }
-
-        k = k % String.valueOf(n).length();
-
-        char[] arr = String.valueOf(n).toCharArray();
-        int len = arr.length-1;
-
-        reverse(arr, 0, arr.length-1);
-        reverse(arr, 0, len-k);
-        reverse(arr,len-k+1, len);
-
-        String ans = new String(arr);
-        System.out.println(ans);
-    }
-    static void reverse(char[] a, int i, int j) {
-        while (i < j) {
-            char t = a[i];
-            a[i++] = a[j];
-            a[j--] = t;
-        }
+        System.out.print(sb.length());
     }
 
 }
