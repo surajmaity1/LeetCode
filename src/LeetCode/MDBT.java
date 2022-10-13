@@ -35,21 +35,6 @@ public class MDBT {
                 maxDepthUsingRecursion(root.right));
     }
 
-    public class Pair{
-        TreeNode node;
-        int leftCount;
-        int rightCount;
-        Pair(){}
-        public int getLeftCount(){
-            return leftCount;
-        }
-        public int getRightCount(){
-            return rightCount;
-        }
-        Pair(TreeNode node, int leftCount, int rightCount){
-            this.node = node;
-            this.leftCount = leftCount;
-            this.rightCount = rightCount;
-        }
-    }
+
+
 }
