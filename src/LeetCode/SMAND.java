@@ -6,6 +6,8 @@ import java.util.Stack;
 public class SMAND {
     //https://leetcode.com/problems/steps-to-make-array-non-decreasing/
 
+
+
     /*
     public int totalSteps(int[] nums) {
         int n = nums.length;
