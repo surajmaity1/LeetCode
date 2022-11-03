@@ -30,6 +30,7 @@ public class LCM {
         return number1*count;
 
     }
+
     static int lcmUsingGcd(int a, int b){
         return (a*b)/gcdRecursive(a,b);
     }
