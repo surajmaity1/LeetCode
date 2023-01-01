@@ -4,7 +4,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WP {
-    public boolean wordPattern1(String pattern, String s) {
+    public boolean wordPattern(String pattern, String s) {
+        String[] words = s.split(" ");
+        if (words.length != pattern.length())
+            return false;
+        Map index = new HashMap();
+        for (Integer i=0; i<words.length; ++i)
+            if (index.put(pattern.charAt(i), i) != index.put(words[i], i))
+                return false;
+        return true;
+    }
+    public boolean wordPattern2(String pattern, String s) {
         String[] words = s.split(" ");
 
         if (words.length != pattern.length()) return false;
